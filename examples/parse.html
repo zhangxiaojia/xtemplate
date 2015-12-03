@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>parse.js - example - xtemplate@4.3.1</title>
+  <title>parse.js - example - xtemplate@4.4.0</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -257,20 +257,22 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
 <div class="container">
   <div class="header">
-    <h1>xtemplate@4.3.1</h1>
+    <h1>xtemplate@4.4.0</h1>
 
     <p>High Speed, eXtensible Template Engine lib on browser and nodejs</p>
   </div>
   <div class="example" id="__react-content"></div>
   <script src="common.js?nowrap"></script>
   <script src="parse.js?nowrap"></script>
-  <div class="highlight"><pre><code language="js"><span class="hljs-keyword">var</span> React = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react'</span>);
-<span class="hljs-keyword">var</span> ReactDOM = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react-dom'</span>);
-<span class="hljs-keyword">var</span> XTemplate = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../'</span>);
+  <div class="highlight"><pre><code language="js"><span class="hljs-comment">/* eslint no-console:0 */</span>
 
-<span class="hljs-keyword">var</span> Test = React.createClass({
+<span class="hljs-keyword">const</span> React = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react'</span>);
+<span class="hljs-keyword">const</span> ReactDOM = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react-dom'</span>);
+<span class="hljs-keyword">const</span> XTemplate = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../'</span>);
+
+<span class="hljs-keyword">const</span> Test = React.createClass({
   parse() {
-    <span class="hljs-keyword">var</span> g = XTemplate.Compiler.parse(<span class="hljs-keyword">this</span>.refs.tpl.value);
+    <span class="hljs-keyword">const</span> g = XTemplate.Compiler.parse(<span class="hljs-keyword">this</span>.refs.tpl.value);
     <span class="hljs-built_in">console</span>.log(g);
   },
 
@@ -288,18 +290,18 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
             <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>模板代码<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
 
             <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{{width:</span> <span class="hljs-attribute">350</span>,<span class="hljs-attribute">height:</span> <span class="hljs-attribute">400</span>}} <span class="hljs-attribute">ref</span>=<span class="hljs-value">"tpl"</span> <span class="hljs-attribute">defaultValue</span>=<span class="hljs-value">{`</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{{width:</span> <span class="hljs-attribute">350</span>, <span class="hljs-attribute">height:</span> <span class="hljs-attribute">400</span>}} <span class="hljs-attribute">ref</span>=<span class="hljs-value">"tpl"</span> <span class="hljs-attribute">defaultValue</span>=<span class="hljs-value">{`</span>
                     {{<span class="hljs-attribute">3</span>*<span class="hljs-attribute">4</span>*<span class="hljs-attribute">5</span>}}
 `}/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">br</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">'parse'</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"ks-button"</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.parse}</span>&gt;</span>parse<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"parse"</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"ks-button"</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.parse}</span>&gt;</span>parse<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 
         <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>)</span>;
-  }
+  },
 });
 
 ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Test</span> /&gt;</span>, document.getElementById('__react-content'));

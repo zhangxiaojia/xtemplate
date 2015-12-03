@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>simple.js - example - xtemplate@4.3.1</title>
+  <title>simple.js - example - xtemplate@4.4.0</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -257,16 +257,18 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
 <div class="container">
   <div class="header">
-    <h1>xtemplate@4.3.1</h1>
+    <h1>xtemplate@4.4.0</h1>
 
     <p>High Speed, eXtensible Template Engine lib on browser and nodejs</p>
   </div>
   <div class="example" id="__react-content"></div>
   <script src="common.js?nowrap"></script>
   <script src="simple.js?nowrap"></script>
-  <div class="highlight"><pre><code language="js"><span class="hljs-keyword">var</span> XTemplate = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../'</span>);
+  <div class="highlight"><pre><code language="js"><span class="hljs-comment">/* eslint no-console:0 */</span>
+
+<span class="hljs-keyword">const</span> XTemplate = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../'</span>);
 <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">new</span> XTemplate(<span class="hljs-string">'Hello {{world}}!'</span>).render({
-    world: <span class="hljs-string">'world'</span>
+  world: <span class="hljs-string">'world'</span>,
 }));
 </code></pre></div>
 </div>

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>gen-func.js - example - xtemplate@4.3.1</title>
+  <title>gen-func.js - example - xtemplate@4.4.0</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -257,40 +257,42 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
 <div class="container">
   <div class="header">
-    <h1>xtemplate@4.3.1</h1>
+    <h1>xtemplate@4.4.0</h1>
 
     <p>High Speed, eXtensible Template Engine lib on browser and nodejs</p>
   </div>
   <div class="example" id="__react-content"></div>
   <script src="common.js?nowrap"></script>
   <script src="gen-func.js?nowrap"></script>
-  <div class="highlight"><pre><code language="js"><span class="hljs-keyword">var</span> React = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react'</span>);
-<span class="hljs-keyword">var</span> ReactDOM = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react-dom'</span>);
-<span class="hljs-keyword">var</span> XTemplate = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../'</span>);
-<span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'modulex-util'</span>);
-<span class="hljs-keyword">var</span> hijs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'highlight.js'</span>);
-<span class="hljs-keyword">var</span> js_beautify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'js-beautify'</span>);
+  <div class="highlight"><pre><code language="js"><span class="hljs-keyword">const</span> React = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react'</span>);
+<span class="hljs-keyword">const</span> ReactDOM = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react-dom'</span>);
+<span class="hljs-keyword">const</span> XTemplate = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../'</span>);
+<span class="hljs-keyword">const</span> hijs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'highlight.js'</span>);
+<span class="hljs-keyword">const</span> jsBeautify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'js-beautify'</span>);
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">js_beauty</span>(<span class="hljs-params">str</span>) </span>{
-  <span class="hljs-keyword">var</span> opts = {
-    <span class="hljs-string">"indent_size"</span>: <span class="hljs-string">"4"</span>, <span class="hljs-string">"indent_char"</span>: <span class="hljs-string">' '</span>,
-    <span class="hljs-string">"preserve_newlines"</span>: <span class="hljs-literal">true</span>, <span class="hljs-string">"brace_style"</span>: <span class="hljs-string">"collapse"</span>,
-    <span class="hljs-string">"keep_array_indentation"</span>: <span class="hljs-literal">false</span>, <span class="hljs-string">"space_after_anon_function"</span>: <span class="hljs-literal">true</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jsBeauty</span>(<span class="hljs-params">str</span>) </span>{
+  <span class="hljs-keyword">const</span> opts = {
+    <span class="hljs-string">'indent_size'</span>: <span class="hljs-string">'4'</span>,
+    <span class="hljs-string">'indent_char'</span>: <span class="hljs-string">' '</span>,
+    <span class="hljs-string">'preserve_newlines'</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">'brace_style'</span>: <span class="hljs-string">'collapse'</span>,
+    <span class="hljs-string">'keep_array_indentation'</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">'space_after_anon_function'</span>: <span class="hljs-literal">true</span>,
   };
-  <span class="hljs-keyword">return</span> js_beautify(str, opts);
+  <span class="hljs-keyword">return</span> jsBeautify(str, opts);
 }
-<span class="hljs-keyword">var</span> Test = React.createClass({
+<span class="hljs-keyword">const</span> Test = React.createClass({
   parse() {
-    <span class="hljs-keyword">var</span> refs = <span class="hljs-keyword">this</span>.refs;
-    <span class="hljs-keyword">var</span> g = XTemplate.Compiler.compileToStr({
+    <span class="hljs-keyword">const</span> refs = <span class="hljs-keyword">this</span>.refs;
+    <span class="hljs-keyword">const</span> g = XTemplate.Compiler.compileToStr({
       content: refs.tpl.value,
       catchError: refs.catchError.checked,
       useNativeRequire: refs.useNativeRequire.checked,
       isModule: refs.isModule.checked,
-      strict: refs.strict.checked
+      strict: refs.strict.checked,
     });
     refs.gen.innerHTML = (<span class="hljs-string">'&lt;pre class="brush: js;"&gt;'</span> +
-    hijs.highlight(<span class="hljs-string">'js'</span>, js_beauty(g)).value + <span class="hljs-string">'&lt;/pre&gt;'</span>);
+    hijs.highlight(<span class="hljs-string">'js'</span>, jsBeauty(g)).value + <span class="hljs-string">'&lt;/pre&gt;'</span>);
   },
 
   render() {
@@ -304,7 +306,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
             <span class="hljs-tag">&lt;<span class="hljs-title">h2</span>&gt;</span>模板代码<span class="hljs-tag">&lt;/<span class="hljs-title">h2</span>&gt;</span>
 
             <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{{width:</span> <span class="hljs-attribute">350</span>,<span class="hljs-attribute">height:</span> <span class="hljs-attribute">400</span>}} <span class="hljs-attribute">ref</span>=<span class="hljs-value">"tpl"</span> <span class="hljs-attribute">defaultValue</span>=<span class="hljs-value">{`</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">{{width:</span> <span class="hljs-attribute">350</span>, <span class="hljs-attribute">height:</span> <span class="hljs-attribute">400</span>}} <span class="hljs-attribute">ref</span>=<span class="hljs-value">"tpl"</span> <span class="hljs-attribute">defaultValue</span>=<span class="hljs-value">{`</span>
                     {{<span class="hljs-attribute">x.y.z.q</span>}}
 
                   <span class="hljs-attribute">my</span> <span class="hljs-attribute">first</span> {{<span class="hljs-attribute">tpl</span>(<span class="hljs-attribute">name</span> ,'<span class="hljs-attribute">0</span>', <span class="hljs-attribute">file</span>=<span class="hljs-value">3)}}</span> <span class="hljs-attribute">o</span>
@@ -351,7 +353,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 `}/&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">br</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">'parse'</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"ks-button"</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.parse}</span>&gt;</span>parse<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"parse"</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"ks-button"</span> <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.parse}</span>&gt;</span>parse<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">label</span> &gt;</span>isModule: <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"isModule"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-title">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">label</span> &gt;</span>useNativeRequire: <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>
                                                    <span class="hljs-attribute">ref</span>=<span class="hljs-value">"useNativeRequire"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
@@ -371,7 +373,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
         <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>)</span>;
-  }
+  },
 });
 
 ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Test</span> /&gt;</span>, document.getElementById('__react-content'));
