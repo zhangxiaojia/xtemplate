@@ -738,6 +738,14 @@
 	  return str + self.uuid++;
 	}
 	
+	function considerSuffix(n, withSuffix) {
+	  var name = n;
+	  if (withSuffix && !/\.xtpl$/.test(name)) {
+	    name += '.xtpl';
+	  }
+	  return name;
+	}
+	
 	function opExpression(e) {
 	  var source = [];
 	  var type = e.opType;
@@ -977,7 +985,9 @@
 	    pushToArray(source, functionConfigCode.source);
 	  }
 	
-	  var isModule = self.config.isModule;
+	  var _self$config = self.config;
+	  var isModule = _self$config.isModule;
+	  var withSuffix = _self$config.withSuffix;
 	
 	  if (idString === 'include' || idString === 'parse' || idString === 'extend') {
 	    if (!func.params || func.params.length > 2) {
@@ -987,7 +997,8 @@
 	
 	  if (isModule) {
 	    if (idString === 'include' || idString === 'parse') {
-	      func.params[0] = { type: 'raw', value: 're' + 'quire("' + func.params[0].value + '")' };
+	      var _name = considerSuffix(func.params[0].value, withSuffix);
+	      func.params[0] = { type: 'raw', value: 're' + 'quire("' + _name + '")' };
 	    }
 	  }
 	
@@ -1006,7 +1017,8 @@
 	      source.push('runtime.extendTpl = ' + functionConfigCode.exp);
 	      source.push('buffer = buffer.async(function(newBuffer){runtime.extendTplBuffer = newBuffer;});');
 	      if (isModule) {
-	        source.push('runtime.extendTplFn = re' + 'quire(' + functionConfigCode.exp + '.params[0])');
+	        var _name2 = considerSuffix(func.params[0].value, withSuffix);
+	        source.push('runtime.extendTplFn = re' + 'quire("' + _name2 + '");');
 	      }
 	    } else if (idString === 'include') {
 	      source.push('buffer = root.' + (isModule ? 'includeModule' : 'include') + '(scope,' + functionConfigCode.exp + ',buffer,tpl);');
@@ -1315,6 +1327,7 @@
 	   * @param {String} [param.name] xtemplate name
 	   * @param {String} param.content
 	   * @param {Boolean} [param.isModule] whether generated function is used in module
+	   * @param {Boolean} [param.withSuffix] whether generated require name with suffix xtpl
 	   * @param {Boolean} [param.catchError] whether to try catch generated function to provide good error message
 	   * @param {Boolean} [param.strict] whether to generate strict function
 	   * @return {Object}
